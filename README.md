@@ -189,8 +189,15 @@ Explaination of how the system works can be shown in simple terms:
   There is no separate mobile or web app required. The entire system runs locally on the Raspberry Pi using Python. The user interacts directly with the system by showing gestures in front of the camera, making it a touch-free and app-free interaction. 
 
 ## 5.3 Input / Output Map
-
-| System Part                              | Type            | What It Does                                                               |
+| System Part | Type | What It Does |
+| ----------- | ---- | ------------ |
+| Raspberry Pi Camera Module | Input | Captures live video of the user’s hand gestures |
+| Hand Gesture (User) | Input | Provides visual gestures inspired by sign language for recognition | 
+| MediaPipe Hands | Processing | Detects hand and tracks finger positions |
+| OpenCV | Processing | Processes video frames and helps analyze gesture patterns |
+| Gesture Logic (Python Code) | Processing | Matches detected hand patterns with predefined gesture meanings |
+| Raspberry Pi | Processing | Acts as the main controller that runs all computations |
+| Display (Monitor/LCD) | Output | Shows the recognized text message (e.g., HELLO, THANK YOU) |
 
 
 ---
