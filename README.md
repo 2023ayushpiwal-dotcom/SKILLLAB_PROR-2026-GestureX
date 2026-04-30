@@ -55,39 +55,30 @@ By the final review, this README should clearly show:
 
 # 1. Team Identity
 
-## 1.1 Studio / Group Name
-
-`Project^2`
+## 1.1 GestureX
 
 ## 1.2 Team Members
 
-| Name                  | Primary Role                    | Secondary Role   | Strengths Brought to the Project |
-| --------------        | ------------------------------- | --------------   | -------------------------------- |
-| `Mrugendra Vasmatkar` | `[Electronics / Coding / App ]` | `Documentation`  | `Documentation, Gift of Gab `|
-| `Jyoti Bagate`        | `[Electronics / Fabrication]`   | `[Coding]`       | `Material Handling, Hardware`    |
+|       Name            |           Primary Role         |    Secondary Role    | Strengths Brought to the Project |
+| --------------------- | -------------------------------| -------------------- | -------------------------------- |
+|  `Ayush Sanjay Piwal` |          `Electronics`         |    `Documentation`   |   `Hardware, Material Handling`  |
+|    `Saurabh Maurya`   |           `Hardware`           |       `Coding`       |       `Material Handling`        |
+|    `Samiksha Pawar`   |         `Research/ App`        |  `Material Handling` |       `Literature Survey`        |
+|      `Rajat Saha`     |           `Hardware`           |       `Coding`       |       `Material Handling`        |
 
 ## 1.3 Project Title
 
-`"Project Project"`
-
-`(because Project-or)`
-
-<img width="1600" height="1131" alt="image" src="https://github.com/user-attachments/assets/c64bfbd4-b3b7-43d9-83ad-c203a5aa11bc" />
+`"Hand Gesture Recognition"`
 
 ## 1.4 One-Line Pitch
 
-`A projected, fully customizable time portal where engineering education is done through PUBG battlefield in the comfort of our home`
+`An Raspi-powered system that understands hand gestures inspired by sign language and translates them into real-time digital communication.`
 
 ## 1.5 Expanded Project Idea
 
-In 1–2 paragraphs, explain:
+This project is an AI-based gesture communication system that allows a user to express common phrases like “hello,” “how are you,” or “thank you” using simple hand gestures. A camera connected to the system captures live video, and the software analyzes the hand movements and finger positions to recognize predefined gestures. Once a gesture is identified, the system converts it into a corresponding text message and displays it on the screen, effectively acting as a real-time translator from gestures to language.
 
-- what your project is,
-- what kind of experience it creates,
-- what technologies are involved.
-
-**Response:**  
-`A projected and fully customizable time portal can transform engineering education into an immersive PUBG-style battlefield experience from the comfort of home. In this environment, students can learn engineering concepts by entering a virtual battlefield where challenges, obstacles, and missions are designed around real technical problems. Instead of passively studying theory, learners actively apply concepts such as electronics, coding, sensors, robotics, mechanics, and system design to complete missions, solve problems, and progress through different levels. This approach makes engineering education more interactive, engaging, and practical by combining gaming, simulation, and hands-on problem-solving in a familiar and exciting format.`
+The experience it creates is interactive and intuitive users can communicate without speaking or typing, simply by using natural hand movements. This makes the system feel responsive and intelligent, almost like it “understands” human gestures. The project uses a combination of hardware and software technologies, including a Raspberry Pi Camera Module for visual input, a Raspberry Pi for processing, and computer vision libraries such as OpenCV and MediaPipe Hands to detect and interpret hand gestures in real time.
 
 ---
 
@@ -105,9 +96,8 @@ List what inspired the project.
 
 ## 2.2 Original Twist
 
-What makes your project original?
-
-**Response:**  
+What makes our project special is that it doesn’t just detect gestures, it understands and interprets them like a communication system. Most existing projects either use simple sensors (like tilt = LED ON) or basic vision (just detecting a hand), but our system goes a step further by using AI to convert real hand gestures into meaningful phrases in real time. This makes it feel less like a demo and more like an actual human–computer interaction system.
+Another key differentiator is the combination of intelligent software and practical hardware. By using the Raspberry Pi Camera Module along with advanced vision tools like MediaPipe Hands and OpenCV, our project performs real-time hand tracking and gesture recognition without needing heavy external systems. It creates a natural, touch-free way of communication that can be extended to accessibility applications, smart interfaces, or assistive technology making it both technically impressive and practically meaningful. 
 
 
 ---
@@ -116,32 +106,33 @@ What makes your project original?
 
 ## 3.1 User Journey 
 
-Describe exactly how a user will use the project.Make it a story
-**Response:**  
+A user walks up to the system and powers on the Raspberry Pi. Within a few seconds, the camera feed appears on the screen, showing a live view from the Raspberry Pi Camera Module. The interface prompts the user to place their hand in front of the camera. As soon as the hand enters the frame, the system powered by MediaPipe Hands detects it and begins tracking the fingers in real time. The user raises an open hand, and the system instantly recognizes the gesture and displays “HELLO” on the screen. Curious, the user tries another gesture holding up two fingers and the system responds with “HOW ARE YOU.” Each action feels immediate, almost like the system is understanding them.
 
-                                                  |
-
-
+As the interaction continues, the user experiments with different gestures, watching the system respond with different phrases. When they make a fist, the message “I AM FINE” appears, followed by “THANK YOU” when they show a thumbs up. The experience becomes intuitive and engaging, requiring no physical contact just natural hand movements. By the end, the user realizes they’ve communicated multiple messages without speaking or typing, experiencing a seamless blend of AI and human expression through a simple, interactive interface.  
 
 ---
 
 # 4. Definition of Success
 
+The project is successful if it can reliably detect and interpret predefined hand gestures in real time and convert them into correct text outputs with minimal delay. When a user performs a gesture in front of the Raspberry Pi Camera Module, the system—powered by MediaPipe Hands should accurately recognize it and display the intended phrase within a second. Success also means the system runs smoothly on the Raspberry Pi without crashes, works under normal lighting conditions, and demonstrates consistent performance during live testing or presentation.
+
 ## 4.1 Definition of “Usable”
 
+The system is considered usable if a new user can operate it without any prior training or technical knowledge. The interaction should feel natural, users simply place their hand in front of the camera and perform gestures without needing instructions every time. The gestures should be easy to perform, clearly distinguishable, and consistently recognized by the system. Additionally, the output (text on screen or LCD) should be clearly visible and understandable, ensuring that the overall experience is simple, intuitive, and frustration free.
 
 
 ## 4.2 Minimum Usable Version
 
 What is the smallest version of this project that still delivers the core experience?
 
-**Response:**  
-
 
 ## 4.3 Stretch Features
 
-What features are nice to have but not essential?
+Once our core system (gesture → text) is working, these are extra features that are nice to have but not essential for it to function:
 
+Voice output (text-to-speech): Converting detected phrases into spoken audio so the system can “talk” as well as display text.
+LCD display integration: Showing output on a compact external screen instead of just the monitor for a more embedded feel.
+Data logging: Saving detected gestures and timestamps for analysis or demonstration purposes.
 
 ---
 
@@ -149,27 +140,25 @@ What features are nice to have but not essential?
 
 ## 5.1 Project Type
 
-Check all that apply.
-
 - [x] Electronics-based
 
 - [ ] Mechanical
 
 - [x] Sensor-based
 
-- [x] App-connected
+- [ ] App-connected
 
-- [x] Motorized
+- [ ] Motorized
 
 - [ ] Sound-based
 
-- [x] Light-based
+- [ ] Light-based
 
 - [x] Screen/UI-based
 
-- [x] Fabricated structure
+- [ ] Fabricated structure
 
-- [x] Game logic based
+- [ ] Game logic based
 
 - [x] Installation
 
@@ -177,17 +166,27 @@ Check all that apply.
 
 ## 5.2 High-Level System Description
 
-Explain how the system works in simple terms.
+Explaination of how the system works can be shown in simple terms:
 
-Include:
+- Input (what the system receives):
+ 
+  The system takes input through a camera. The Raspberry Pi Camera Module continuously captures live video of the user’s hand. This video acts as the raw input, showing different hand gestures and finger positions.
+  
+- Processing (what the system does with it):
+ 
+  The captured video is sent to the Raspberry Pi, where software processes it. Using MediaPipe Hands, the system detects the hand and identifies key points on the fingers. Then, with the help of OpenCV, the program analyzes these points to determine which gesture is being shown. The code compares the detected gesture with predefined patterns and decides what it means (for example, open hand = “HELLO”).
+  
+- Output (what the system gives back):
+  
+  Once a gesture is recognized, the system displays the corresponding message on the screen. This could be shown on the monitor or an optional LCD display. For example, if the user shows a thumbs-up, the output might be “THANK YOU.”
+  
+- Physical structure (how it is built):
 
-- input,
-- processing,
-- output,
-- physical structure,
-- app interaction if any.
+  Raspberry Pi (main processor), camera module connected to the Pi, optional components like LCD, LED, or buzzer. All components are connected directly to the Raspberry Pi, which acts as the central controller.
 
-**Response:**  
+- App interaction if any:
+  
+  There is no separate mobile or web app required. The entire system runs locally on the Raspberry Pi using Python. The user interacts directly with the system by showing gestures in front of the camera, making it a touch-free and app-free interaction. 
 
 ## 5.3 Input / Output Map
 
