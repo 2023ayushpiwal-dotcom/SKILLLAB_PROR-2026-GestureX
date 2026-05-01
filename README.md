@@ -123,12 +123,12 @@ The system is considered usable if a new user can operate it without any prior t
 
 ## 4.2 Minimum Usable Version
 
-What is the smallest version of this project that still delivers the core experience?
+This version is the minimum, because it skips advanced additions like full sentence construction, gesture sequences, LCD integration, or extra sensors, but still proves the main idea that is the system can see a hand, understand a gesture, and convert it into meaningful text instantly.
 
 
 ## 4.3 Stretch Features
 
-Once our core system (gesture → text) is working, these are extra features that are nice to have but not essential for it to function:
+Once our core system (gesture -> text) is working, these are extra features that are nice to have but not essential for it to function:
 
 Voice output (text-to-speech): Converting detected phrases into spoken audio so the system can “talk” as well as display text.
 LCD display integration: Showing output on a compact external screen instead of just the monitor for a more embedded feel.
