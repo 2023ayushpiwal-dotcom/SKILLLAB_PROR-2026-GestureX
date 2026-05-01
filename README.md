@@ -243,24 +243,18 @@ Add a sketch with labels showing:
 
 | Component                 | Quantity | Purpose                               |
 | ------------------------- | --------:| ------------------------------------- |
-| `[Raspi/FPGA]`                 | `1`      | `[Main controller]`                   |
-| `[L298N Motor Driver]`    | `1`      | `[Control Motors]`                    |
-| `[BO Motors]`             | `2`      | `[Rotate wheels]`                     |
-| `[Buck Converter]`        | `1`      | `[Power ESP32]`                       |
-| `[Li Ion Battery Pack]`   | `2`      | `[Power]`                             |
-| `[Projector]`             | `1`      | `[Display obstacles]`                 |
-| `Camera (Webcam / Phone)` | `1`      | `[Tracks car position using markers]` |
+| `[Raspi]`                 | `1`      | `[Main controller]`                   |
+| `Camera (Webcam / Camera module)` | `1`      | `[Tracks hand's gestures]` |
+| `LCD Display (optional)` | `1` | `[[Display output message]` |
 
 ## 7.2 Wiring Plan
 
-Describe the main electrical connections.
 
-**sample Response:**  
-`The RASPI is connected to the motor driver (L298N) using four GPIO pins (18,19; 22,23) to control motor direction (IN1, IN2, IN3, IN4). Two PWM-capable pins (ENA and ENB; 25 and 26) are connected to control the speed of each motor.
+The project is centered around the Raspberry Pi, which acts as the main processing unit. All components are connected directly to it. The Raspberry Pi Camera Module is connected to the Raspberry Pi through the CSI (Camera Serial Interface) port using a ribbon cable. This connection is responsible for sending live video input to the Raspberry Pi for gesture detection.
 
-The motors are connected to the output terminals of the motor driver. The motor driver is powered directly by the battery pack (higher voltage), while the ESP32 receives regulated 5V from the buck converter.
+Optional output components such as an LCD display, LED, or buzzer can be connected to the Raspberry Pi through its GPIO pins. For example, an LED can be connected to a GPIO output pin with a current-limiting resistor and ground, allowing it to blink whenever a gesture is successfully detected. Similarly, an LCD display can be connected via I2C pins (SDA and SCL) to show the recognized text output externally. 
 
-All components share a common ground to ensure stable operation. The projector and camera are connected to the laptop, which handles tracking and game logic separately.`
+All components share the Raspberry Pi’s power and ground connections, making the Pi the central hub for both input and output devices.
 
 ## 7.3 Circuit Diagram/architecture diagram
 
@@ -282,48 +276,65 @@ Insert a hand-drawn or software-made circuit diagram.
 
 ---
 
-# 8. Software Planning/
+# 8. Software Planning
 
 ## 8.1 Software Tools
 
 | Tool / Platform                | Purpose                                        |
 | ------------------------------ | ---------------------------------------------- |
-| `[MicroPython]`                | `Control ESP32`                                |
-| `[Python/PyGame/OpenCV]`       | `Track markers, game logic, create projection` |
-| `[Fusion/Blender/Illustrator]` | `[Prototyping structure]`                      |
-|                                |                                                |
+| `[Python]`                | `Main programming language used to control the system`                                |
+| `[OpenCV]`       | `Captures video and handles image processing` |
+| `[MediaPipe Hands]` | `[Detects hand and tracks finger positions]`                      |
+| `[Gesture Logic (Custom Code)]`                | `Matches finger positions to specific gestures`                                |
+| `[Display Module]`                | `Shows output text on screen or LCD`                                |
 
 ## 8.2 Software Logic/Algorithm
 
-Describe what the code must do.
+- Startup behavior:
 
-Include:
+  When the system powers on, the Raspberry Pi boots and runs the Python program. The program initializes the camera (via the Raspberry Pi Camera Module), loads required libraries like OpenCV and MediaPipe Hands, and sets up all necessary variables and gesture mappings. The system then displays a ready message such as “Show hand to start.”
+  
+- Input handling:
 
-- startup behavior,
-- input handling,
-- sensor reading,
-- decision logic,
-- output behavior,
-- communication logic,
-- reset behavior.
+  The system continuously captures video frames from the camera. Each frame acts as input. The program ensures the frame is correctly read and converted into a format suitable for processing.
+  
+- Sensor reading:
 
-**Response:**  
-`
+  There is no traditional sensor like temperature or gas sensors here—the camera itself acts as the primary input sensor.
 
-- **Sample Startup behavior:**  
-  The Raspi/FPGA initializes motor pins, PWM control, and starts a WiFi access point with a web server. The laptop initializes camera input, tracking system, and projection mapping.
-- **Input handling:**  
-  Movement commands are received from the laptop (pygame sends http requests)
-- **Sensor reading:**  
-  The camera continuously captures frames, and OpenCV detects ArUco markers to determine the car’s position and orientation.
-- **Decision logic:**  
-  The system maps the car’s position into a virtual coordinate system and checks for nearby obstacles or collisions. If movement is valid, the command is allowed; if not, it is blocked or replaced with a feedback action (like a slight shake).
-- **Output behavior:**  
-  The ESP32 drives the motors using PWM signals to control speed and direction. The projector displays the updated game environment, including obstacles, targets, and feedback visuals.
-- **Communication logic:**  
-  The laptop sends HTTP requests (e.g., `/forward`, `/left`) to the ESP32 over WiFi. The ESP32 parses these commands and executes motor actions.
-- **Reset behavior:**  
-  If no command is received within a short timeout, the ESP32 stops the motors. The game resets when a level is completed or restarted.`
+The camera captures hand movement
+
+MediaPipe extracts 21 key landmark points of the hand
+
+These points represent finger positions and orientation
+
+- Decision logic:
+
+  This is the most important part. The program analyzes the positions of the finger landmarks to determine which fingers are open or closed.
+  
+- Output behavior:
+
+  Once a gesture is recognized:
+
+The corresponding message is displayed on the screen.
+
+Optionally, an LED can blink or a buzzer can beep as confirmation.
+
+The output is updated in real time as gestures change.
+
+- Communication logic:
+
+  All processing happens internally on the Raspberry Pi, so no external communication (like Wi-Fi or Bluetooth) is required.
+  
+- Reset behavior:
+
+  The system does not require a manual reset. It runs in a continuous loop:
+
+If no hand is detected -> it waits
+
+If a new gesture appears -> it processes it immediately
+
+Pressing a key (like ESC) can safely stop the program
 
 ## 8.3 Code Flowchart
 
