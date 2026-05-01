@@ -208,7 +208,7 @@ Explaination of how the system works can be shown in simple terms:
 
 
 
-![System Architecture](images/Concept_Architecture.png)
+![System Architecture](images/System_Architecture.png)
 
 
 
