@@ -206,16 +206,9 @@ Explaination of how the system works can be shown in simple terms:
 
 ## 6.1 Concept Architecture/sketch/schematic
 
-Add an early sketch of the full idea.
 
-**Insert image below:**  
-`[Upload image and link here]`
 
-Example:
-
-```md
-
-```
+![System Architecture](images/Concept_Architecture.png)
 
 
 
