@@ -232,13 +232,9 @@ Optional output components such as an LCD display, LED, or buzzer can be connect
 
 All components share the Raspberry Pi’s power and ground connections, making the Pi the central hub for both input and output devices.
 
-## 7.3 Circuit Diagram/architecture diagram
+## 7.3 Block Diagram
 
-Insert a hand-drawn or software-made circuit diagram.
-
-**Insert image below:**  
-`[Upload image and link here]`
-<img width="867" height="1156" alt="" src="" />
+![Block Diagram](images/Block_Diagram.png)
 
 
 ---
