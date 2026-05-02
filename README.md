@@ -467,21 +467,10 @@ None
 
 ## 16 Build Photos
 
-Add photos throughout the project.
 
-Suggested images:
+![Raspi setup of our Project](images/finalbuild.png)
 
-- early sketch,
-- prototype,
-- electronics testing,
-- mechanism test,
-- app screenshot,
-- final build.
-- <img width="960" height="1280" alt="WhatsApp Image 2026-04-24 at 9 46 02 AM (1)" src="https://github.com/user-attachments/assets/74baa570-5770-483e-be6d-d2f03386e37c" />
-
-![System Architecture](images/System_Architecture.png)
-![System Architecture](images/System_Architecture.png)
-![System Architecture](images/System_Architecture.png)
+![Output interface with Hand Gesture Recognistion](images/System_Architecture.png)
 
 
 
