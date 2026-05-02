@@ -91,8 +91,8 @@ List what inspired the project.
 | Source Type | Title / Link                                                        | What Inspired You                                                                         |
 | ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `[Video]`  | `https://youtu.be/EWaYOil--sQ?si=znA4aHTRdHi46k4-` | `How to use MediaPipe + OpenCV on Raspberry Pi to capture camera input, detect hand landmarks, and recognize hand gestures.` |
-|  `[Video]`  | `https://youtu.be/a7B5EZVHHkw?si=W97N1txiP9AJvZIg`          |    `how to integrate **camera + OpenCV`                                                                                    |
-|  `[Research Paper]`   |  `https://ieeexplore.ieee.org/document/10425411`                                                             |                                                                                           |
+|  `[Video]`  | `https://youtu.be/a7B5EZVHHkw?si=W97N1txiP9AJvZIg`          |    `how to integrate camera + OpenCV`                                                                                    |
+|  `[Research Paper]`   |  `https://ieeexplore.ieee.org/document/10425411`                                                             | `Learned how to build a real-time hand gesture recognition system using MediaPipe and OpenCV for controlling devices in embedded/IoT applications`                                                                                         |
 
 ## 2.2 Original Twist
 
