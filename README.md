@@ -468,9 +468,9 @@ None
 ## 16 Build Photos
 
 
-![Raspi setup of our Project](images/finalbuild.png)
+![Raspi setup of our Project](images/finalbuild.jpeg)
 
-![Output interface with Hand Gesture Recognistion](images/finalopss.png)
+![Output interface with Hand Gesture Recognistion](images/finalopss.jpeg)
 
 
 
