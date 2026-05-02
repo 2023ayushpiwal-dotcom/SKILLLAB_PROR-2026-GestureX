@@ -90,9 +90,9 @@ List what inspired the project.
 
 | Source Type | Title / Link                                                        | What Inspired You                                                                         |
 | ----------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `[Video]`   | `https://www.instagram.com/reel/DW4CT7WCDry/?igsh=cXg3dzAxYmdncDBo` | `How projection mapping can be used to create interactive digital + physical experiences` |
-|             |                                                                     |                                                                                           |
-|             |                                                                     |                                                                                           |
+| `[Video]`  | `https://youtu.be/EWaYOil--sQ?si=znA4aHTRdHi46k4-` | `How to use MediaPipe + OpenCV on Raspberry Pi to capture camera input, detect hand landmarks, and recognize hand gestures.` |
+|  `[Video]`  | `https://youtu.be/a7B5EZVHHkw?si=W97N1txiP9AJvZIg`          |    `how to integrate **camera + OpenCV`                                                                                    |
+|  `[Research Paper]`   |  `https://ieeexplore.ieee.org/document/10425411`                                                             |                                                                                           |
 
 ## 2.2 Original Twist
 
@@ -211,30 +211,6 @@ Explaination of how the system works can be shown in simple terms:
 ![System Architecture](images/System_Architecture.png)
 
 
-
-## 6.2 Labeled Build Sketch/architecture/flow diagram/algorithm
-
-Add a sketch with labels showing:
-
-- structure,
-- electronics placement,
-- user touch points,
-- moving parts,
-- output elements.
-
-**Insert image below:**  
-`[Upload image and link here]`
-<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/95637f31-b4e7-4427-a9e1-4b63fbeb0ac5" />
-
-## 6.3 Approximate Dimensions
-
-| Dimension        | Value   |
-| ---------------- | ------- |
-| Length           | `16 cm` |
-| Width            | `16 cm` |
-| Height           | `8 cm`  |
-| Estimated weight | `400 g` |
-
 ---
 
 # 7. Electronics Planning
@@ -264,15 +240,6 @@ Insert a hand-drawn or software-made circuit diagram.
 `[Upload image and link here]`
 <img width="867" height="1156" alt="" src="" />
 
-
-# 7.4. Power Plan
-
-| Question         | Response                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Power source     | `Battery (Li-ion pack)`                                                                                                                           |
-| Voltage required | `~6–8.4V for motors (via driver), stepped down to 5V for ESP32 (buck converter)`                                                                  |
-| Current concerns | `Motors can draw high current under load, which may cause voltage drops affecting ESP32 and WiFi stability`                                       |
-| Safety concerns  | `Avoid over-discharging Li-ion batteries, ensure proper voltage regulation, prevent short circuits, and secure wiring to avoid loose connections` |
 
 ---
 
@@ -336,27 +303,7 @@ If a new gesture appears -> it processes it immediately
 
 Pressing a key (like ESC) can safely stop the program
 
-## 8.3 Code Flowchart
-
-Insert a flowchart showing your code logic.
-
-Suggested sequence:
-
-- start,
-- initialize,
-- wait for input,
-- read input,
-- decision,
-- trigger output,
-- repeat or reset,
-- error handling.
-
-**Insert image below:**  
-<img width="1600" height="1200" alt="image" src="" />
-<img width="1600" height="1200" alt="image" src="" />
-
-
-
+---
 
 # 9. Bill of Materials
 
@@ -365,43 +312,42 @@ Suggested sequence:
 | Item                             | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec               | Why This Choice?          |
 | -------------------------------- | --------:| ------- | ------------ | --------------:| ----------------------------- | ------------------------- |
 | `[RASPI]`                        | `1`      | `Yes`   | `No`         | `0`            | `38 Pin ESP32`                | `[To control components]` |
-| `[Motor Driver]`                 | `[1]`    | `[Yes]` | `[No]`       | `0`            | `[LN296]`                     | `[To drive both motors]`  |
-| `[DC Motors and wheel]`          | `[2]`    | `[No]`  | `[Yes]`      | `[150]`        | `[BO Motors and 6 cm wheels]` | `[high torque motors]`    |
-| `[Buck Converter]`               | `[1]`    | `[No]`  | `[Yes]`      | `[75]`         |                               |                           |
-| `[Li-ion batteries with holder]` | `[1]`    | `[No]`  | `[Yes]`      | `[200]`        |                               |                           |
+| `[Micro SD Card (16GB)]`                        | `1`      | `No`   | `Yes`         | `₹600`            | `Class 10 storage`                | `[Stores OS, libraries, and project code]` |
+| `[Camera Module]`                 | `[1]`    | `[No]` | `[Yes]`       | `500`            | `[5MP/8MP camera, CSI interface]`                     | `[Captures real-time hand gestures with good clarity]`  |
+| `[16x2 LCD (I2C) (Optional)]`          | `[1]`    | `[No]`  | `[Yes]`      | `[150]`        | `[I2C interface display]` | `[Displays output text externally]`    |
+| `[Jumper Wires]`                        | `1 set`      | `No`   | `Yes`         | `₹100–₹200`            | `Male-Female wires`                | `[Connect components to GPIO pins]` |
+| `[LED]`                        | `1–2`      | `Yes`   | `No`         | `₹10–₹20`            | `5mm standard LED`                | `Visual feedback for gesture detection` |
+| `[Resistors]`                        | `2–3`      | `Yes`   | `No`         | `₹5–₹10`            | `220Ω / 330Ω`                | `Limits current for LED protection` |
 
 ## 9.2 Material Justification
 
-Explain why you selected your main materials and components.
+The components for this project were chosen to balance performance, simplicity, and cost, while still enabling real-time AI-based gesture recognition.
 
-**Response:**  
-`DC motors (BO motors) were chosen instead of servos or steppers because the system requires continuous rotation for movement rather than precise angular control (Previously, we were considering using steppers as we were planning on tracking movement on the ESP using its relative position from an origin, but since we're using a camera now, this is not required). A motor driver (L298N) was used to allow bidirectional control and speed variation using PWM.`
+The Raspberry Pi was selected as the main processing unit because it is a compact, affordable single-board computer capable of running Python and handling computer vision tasks efficiently. It supports libraries such as OpenCV and MediaPipe Hands, which are essential for real-time hand detection and gesture analysis. Its built-in GPIO pins also allow easy integration with output components like LEDs, buzzers, or displays, making it ideal for embedded projects.
 
 
 ## 9.3 Items You chose
 
 | Item                 | Why Needed               | Purchase Link | Latest Safe Date to Procure | Status       |
 | -------------------- | ------------------------ | ------------- | --------------------------- | ------------ |
-| `BO Motors + Wheels` | `Drive system for car`   | `robu.in`     | `15th April`                | `[Received]` |
-| `Buck Converter`     | `Stable power for ESP32` | `local store` | `before testing`            | `[Received]` |
-| `Li-ion Batteries`   | `Portable power`         | `local store` | `before testing`            | `Recieved`   |
+| `Web Cam` | `Captures real-time hand gestures with good clarity`   | `https://amzn.in/d/03XP9sAS`     | `3rd May`                | `[Received]` |
 
 ## 9.4 Budget Summary
 
 | Budget Item           | Estimated Cost              |
 | --------------------- | ---------------------------:|
-| Electronics           | `[400]`                     |
-| Mechanical parts      | `[200]`                     |
+| Electronics           | `[260]`                     |
+| Mechanical parts      | `[600]`                     |
 | Fabrication materials | `[0 (Available on campus)]` |
 | Purchased extras      | `[0]`                       |
-| Contingency           | `[300]`                     |
-| **Total**             | `[900]`                     |
+| Contingency           | `[0]`                     |
+| **Total**             | `[860]`                     |
 
 ## 9.5 Budget Reflection
 
-If your cost is too high, what can be simplified, removed, substituted, or shared?
+If the project cost becomes too high, several components can be simplified or replaced without affecting the core functionality:
 
-**Response:**  
+Remove optional outputs for example the LCD display, LED, and buzzer can be removed since the main output can be shown directly on the monitor. This reduces both cost and wiring complexity.
 
 ---
 
@@ -409,36 +355,20 @@ If your cost is too high, what can be simplified, removed, substituted, or share
 
 ## 10.1 Team Working Agreement
 
-Write how your team will work together.
+Our team of four will work collaboratively by dividing the project into clear roles based on each member’s strengths. One member will focus on hardware setup (connecting the Raspberry Pi Camera Module and basic wiring), one on software development (implementing gesture detection using MediaPipe Hands and OpenCV), one on integration and testing (combining hardware and software, debugging), and one on documentation and presentation (report writing, diagrams, and PPT). However, all members will have a basic understanding of each part to ensure smooth collaboration and backup support when needed.
 
-Include:
-
-- how tasks are divided,
-- how decisions are made,
-- how progress will be checked,
-- what happens if a task is delayed,
-- how documentation will be maintained.
-
-**Response:**  
+Decisions will be made through group discussions, where ideas are proposed and the most practical solution is chosen collectively. If a task is delayed, other team members will assist in completing it to keep the project on schedule. 
 
 
-## 10.2 Task Breakdown
-
-| Task ID | Task                    | Owner    | Estimated Hours | Deadline     | Dependency | Status |
-| ------- | ----------------------- | -------- | ---------------:| ------------ | ---------- | ------ |
-| T1      | `[Finalize concept]`    | `[Both]` | `2`             | `1st April`  | `None`     | `Done` |
-
-
-## 10.3 Responsibility Split
+## 10.2 Responsibility Split
 
 | Area                 | Main Owner     | Support Owner |
 | -------------------- | ----------     | ------------- |
-| Concept              | `[Mrugendra]`  | `[Jyoti]`     |
-| Electronics          | `[]`           | `[]`          |
-| Coding               | `[]`           | `[]`          |
-| Mechanical build     | `[]`           | `[]`          |
-| Testing              | `[]`           | `[]`          |
-| Documentation        | `[]`           | `[]`          |
+| Electronics          | `[Samiksha Pawar]`           | `[Rajat Saha]`          |
+| Coding               | `[Rajat Saha]`           | `[Saurabh Maurya]`          |
+| Mechanical build     | `[Ayush Piwal]`           | `[Saurabh Maurya]`          |
+| Testing              | `[Saurabh Maurya]`           | `[Samiksha Pawar]`          |
+| Documentation        | `[Ayush Piwal]`           | `[Samiksha Pawar]`          |
 
 ---
 
@@ -452,7 +382,7 @@ Expected outcomes:
 
 - [x] Idea finalized
 - [x] Core interaction decided
-- [x] Sketches made
+- [ ] Sketches made
 - [x] BOM completed
 - [x] Purchase needs identified
 - [ ] Key uncertainty identified
@@ -463,10 +393,10 @@ Expected outcomes:
 Expected outcomes:
 
 - [x] Electronics tests completed
-- [ ] CAD / structure planning completed
+- [x] CAD / structure planning completed
 - [ ] App UI started if needed
 - [x] Mechanical concept tested
-- [x] Main subsystems partially working
+- [ ] Main subsystems partially working
 
 ### Bi Hour 3 — Integrate
 
@@ -476,7 +406,7 @@ Expected outcomes:
 - [x] Electronics integrated
 - [x] Code connected to hardware
 - [ ] App connected if required
-- [x] First playable version exists
+- [ ] First playable version exists
 
 ### Bi Hour 4 — Refine and Finish
 
@@ -492,10 +422,8 @@ Expected outcomes:
 
 | Days   | Planned Goal   | What Actually Happened | What Changed   | Next Steps     |
 | ------ | -------------- | ---------------------- | -------------- | -------------- |
-| Day 1 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 2 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 3 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
-| Day 4 | `[Write here]` | `[Write here]`         | `[Write here]` | `[Write here]` |
+| Day 1 | `[Completion of code and hardware implementation]` | `[Detection of fingers and hand gestures]`         | `[-]` | `[Working on errors]` |
+| Day 2 | `[Making the codes error free]` | `[Errors were fixed and final project was build]`         | `[Lag was improved]` | `[-]` |
 
 ---
 
@@ -505,14 +433,7 @@ Expected outcomes:
 
 | Risk                                                            | Type         | Likelihood | Impact   | Mitigation Plan                                                                       | Owner                |
 | --------------------------------------------------------------- | ------------ | ---------- | -------- | ------------------------------------------------------------------------------------- | -------------------- |
-| WiFi connection between laptop and ESP32 becomes unstable       | `Technical`  | `Medium`   | `High`   | Keep ESP32 close, ensure stable power supply, reduce network load, add fail-safe stop | `[Gopal]`           |
-
-
-## 13.2 Biggest Unknown Right Now
-
-What is the single biggest uncertainty in your project at this stage?
-
-**Response:**  
+| WiFi connection between laptop and Raspi becomes unstable       | `Technical`  | `Medium`   | `High`   | Keep Raspi properly connected, reduce network load, add fail-safe stop | `[Saurabh Maurya]`           |
 
 
 ---
@@ -523,13 +444,14 @@ What is the single biggest uncertainty in your project at this stage?
 
 | What Needs Testing     | How You Will Test It                                                                 | Success Condition                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `[Wifi connection]`    | `[Check if motor spins via app button]`                                              | `[Both motors accurately respond to wifi signals]`                                                   |
-                       |
+| `[Wifi connection]`    | `[IP was visible on our laptop system]`                                              | `[OS will will work properly]`                                                   |
+                       
+                       
 ## 14.2 Testing and Debugging Log
 
-| Date          | Problem Found                         | Type         | What You Tried                                | Result               | Next Action                                    |
+| Date          | Problem Found                         | Type         | What You Tried                                | Result               |
 | ------------- | ------------------------------------- | ------------ | --------------------------------------------- | -------------------- | ---------------------------------------------- |
-| `18th April`  | `Car not balancing properly`          | `Mechanical` | `Add low-friction caster support to one side` | `Worked`             | `improve caster structure`                     |
+| `30th April`  | `MediaPipe installation failed`          | `Technical` | `Installing MediaPipe Library on OS` | `Worked`             | 
 
 
 ## 14.3 Playtesting Notes
@@ -545,34 +467,7 @@ What is the single biggest uncertainty in your project at this stage?
 
 ## 15.1 Fabrication Process(if any)
 
-Describe how the project was physically made.
-
-Include:
-
-- cutting,
-- 3D printing,
-- assembly,
-- fastening,
-- wiring,
-- finishing,
-- revisions.
-
-**Response:**  
-`The fabrication process involved designing, manufacturing, assembling, and refining both the physical structure and electronic integration of the system.`
-
-`Design (CAD Modeling):
-The initial model was created using CAD software, where components were designed based on the actual dimensions of the electronic parts. This ensured accurate fitting and minimized errors during assembly.
-Cutting (Laser Cutting):
-The designed parts were fabricated using laser cutting techniques. Sheets were cut precisely according to the CAD model to create the structural base and mounts for components.`
-
-`Components were fixed using adhesives and mechanical supports. Certain parts were intentionally kept modular (not permanently fixed) to allow easy replacement and modification of electronics.
-Surface Finishing:
-Some parts were sanded to smooth rough edges after cutting. Sawdust mixed with adhesive was used to fill gaps and uneven edges, improving structural finish. The final structure was then painted for better aesthetics and durability.`
-
-`Environment Setup (Dark Room Fabrication):
-To enhance projection visibility, a controlled dark environment was created using Z-boards, paper sheets, and bedsheets. This minimized external light interference and improved projection clarity.
-Revisions and Iterations:
-Multiple adjustments were made throughout the process, including refining alignment, improving structural stability, repositioning components, and optimizing the interaction between the physical car and projected environment.`
+None
 
 ## 16 Build Photos
 
@@ -596,24 +491,30 @@ Suggested images:
 
 ## 17.1 Final Description
 
-Describe the final version of your project.
+The final version of our project is an Raspi-based gesture communication system that uses a camera to recognize hand gestures inspired by sign language and convert them into meaningful text in real time. The system is built around a Raspberry Pi, which processes live video input from the Raspberry Pi Camera Module. Using advanced computer vision libraries such as MediaPipe Hands and OpenCV, the system detects hand landmarks, analyzes finger positions, and identifies predefined gestures accurately.
 
-**Response:**  
+When a user performs a gesture in front of the camera, the system interprets it and instantly displays the corresponding phrase (such as “HELLO,” “HOW ARE YOU,” or “THANK YOU”) on the screen. The interaction is fully touch-free and happens in real time, creating a smooth and intuitive user experience. Optional feedback components like LEDs or an LCD display can enhance the system by providing visual confirmation or standalone output.
+
+Overall, the final system demonstrates a practical application of Raspi and computer vision for gesture-based communication. It highlights how simple hardware combined with intelligent software can enable natural human–computer interaction and can be extended for accessibility, assistive communication, or smart interface applications.
 
 
 ## 17.2 What Works Well
 
+One of the strongest aspects of the project is its real-time gesture recognition capability. Using the MediaPipe Hands along with OpenCV, the system is able to quickly detect hand positions and respond almost instantly. This creates a smooth and interactive experience where users can see immediate results when they perform gestures.
 
+Another area that works well is the simplicity and reliability of the hardware setup. The Raspberry Pi Camera Module integrates seamlessly with the Raspberry Pi, allowing stable video input without complex wiring. Since most of the intelligence is handled in software, the system remains easy to set up and maintain.
 
 ## 17.3 What Still Needs Improvement
 
+One area that needs improvement is gesture recognition accuracy under different conditions. The system currently works best in good lighting and with a clear background, but performance can drop in low light or cluttered environments. Although MediaPipe Hands is powerful, additional tuning and filtering are needed to make detection more stable and reliable in real-world situations.
+
+Another limitation is the restricted number of gestures. At present, the system supports only a small set of predefined gestures, which limits communication. Expanding the gesture set and improving differentiation between similar hand signs would make the system more expressive and closer to real sign language usage.
 
 ## 17.4 What Changed From the Original Plan
 
-How did the project change from the initial idea?
+Initially, our project idea was to develop a virtual mouse system combined with a gesture-based password mechanism, where hand gestures would be used to control the cursor and also act as a secure input method for authentication. This concept focused more on human–computer interaction and security applications, requiring precise gesture tracking and control.
 
-**Response:**  
-
+However, during development, we shifted our focus to a gesture-based communication system inspired by sign language. This change was made because implementing a reliable virtual mouse and password system required very high precision, calibration, and complex control logic, which was difficult to achieve consistently on the Raspberry Pi. Instead, by using tools like MediaPipe Hands, we redirected the project toward recognizing clear hand gestures and converting them into meaningful text output, which proved to be more stable and practical.
 
 ---
 
@@ -621,45 +522,22 @@ How did the project change from the initial idea?
 
 ## 18.1 Team Reflection
 
-What did your team do well?  
-What slowed you down?  
-How well did you manage time, tasks, and responsibilities?
-
-**Response:**  
-
+Our team worked well in terms of collaboration and task distribution. Each member took responsibility for a specific part of the project—hardware setup, software development using MediaPipe Hands and OpenCV, integration/testing, and documentation. We regularly communicated and helped each other when needed, which ensured that no part of the project was completely dependent on one person. This teamwork helped us complete the core functionality successfully.
 
 ## 18.2 Technical Reflection
 
-What did you learn about:
+We learned how to set up and power a Raspberry Pi system and make safe, clean connections using GPIO pins. This included connecting components like LEDs, buzzers, and displays, understanding basic voltage/current limits, and using resistors correctly. We also understood how peripherals like the Raspberry Pi Camera Module interface with the Pi (CSI vs GPIO/I2C).
 
-- electronics,
-- coding,
-- mechanisms,
-- fabrication,
-- integration?
+We gained hands-on experience writing Python code for real-time systems. We learned how to capture and process video frames using OpenCV and how to use MediaPipe Hands to detect and track hand landmarks. We also learned to design clear decision logic (mapping finger positions to gestures), handle loops and errors, and optimize code for smoother performance on limited hardware.
 
-**Response:**  
-
-
-## 18.3 Design Reflection
-
-What did you learn about:
-
-- designing ,
-- delight,
-- clarity,
-- physical interaction,
-- understanding,
-- iteration?
-
-**Response:**  
+The biggest learning was how to combine hardware and software into a working system connecting the camera, running the code, debugging issues, and ensuring all parts communicate properly. We also learned that integration is where most real-world problems appear, and solving them requires teamwork, testing, and iteration. 
 
 
 ## 18.4 If You Had One More hour
 
-What would you improve next?
+With one more hour, we would focus on improving accuracy and user experience. First, we would fine-tune the gesture detection by adjusting thresholds and adding simple smoothing so that the system recognizes gestures more consistently, especially under different lighting conditions. This would involve refining the logic built on MediaPipe Hands and improving how frames are processed using OpenCV.
 
-**Response:**  
+We would also enhance the user interface by adding clear on-screen labels, gesture instructions, and a confirmation message when a gesture is successfully detected.
 
 ` `
 
