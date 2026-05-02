@@ -470,7 +470,7 @@ None
 
 ![Raspi setup of our Project](images/finalbuild.png)
 
-![Output interface with Hand Gesture Recognistion](images/System_Architecture.png)
+![Output interface with Hand Gesture Recognistion](images/finalopss.png)
 
 
 
